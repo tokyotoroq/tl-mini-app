@@ -61,14 +61,19 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .page.active { display:block; }
 @keyframes pageIn { from { opacity:.4; transform:translateY(3px); } to { opacity:1; transform:none; } }
 
-/* Тонкая line-art иллюстрация на фоне страницы — один мотив,
-   почти прозрачный, не мешает содержимому и не ловит клики. */
-.page-illustration { position:absolute; z-index:-1; pointer-events:none; color:var(--accent-bright); }
-.illustration-fuji { left:0; bottom:0; width:100%; height:170px; opacity:.20; }
-.illustration-enso { top:-36px; right:-46px; width:230px; height:230px; opacity:.16; }
-.illustration-sakura { top:0; right:0; width:210px; height:150px; opacity:.20; }
-.illustration-torii { top:14px; left:-26px; width:220px; height:170px; opacity:.18; }
-.illustration-seigaiha { left:0; bottom:0; width:100%; height:46px; opacity:.11; }
+/* Контент страницы всегда поверх иллюстрации — надёжнее, чем
+   отрицательный z-index (тот в связке с анимацией .page отваливается
+   в WebKit/Telegram сразу после первого проигрыша анимации). */
+.page-content { position:relative; z-index:1; }
+
+/* Тонкая line-art иллюстрация на фоне страницы — один предметный
+   мотив, только контур, без заливки, почти прозрачный. */
+.page-illustration { position:absolute; z-index:0; pointer-events:none; color:var(--accent-bright); fill:none; }
+.illustration-temple { left:0; bottom:0; width:100%; height:150px; opacity:.22; stroke-width:1.3; }
+.illustration-kazaguruma { top:-8px; right:-10px; width:150px; height:150px; opacity:.20; stroke-width:1.3; }
+.illustration-sakura { top:0; right:0; width:220px; height:180px; opacity:.22; stroke-width:1.1; }
+.illustration-torii { top:14px; left:-22px; width:210px; height:170px; opacity:.19; stroke-width:1.6; }
+.illustration-lantern { right:14px; bottom:0; width:100px; height:150px; opacity:.18; stroke-width:1.2; }
 .profile-row { display:flex; align-items:center; gap:11px; margin: 2px 1px 16px; }
 .avatar-placeholder { width:42px; height:42px; border-radius:13px; display:flex; align-items:center; justify-content:center; background:var(--surface-3); border:1px solid var(--border); color:var(--accent-bright); font-size:16px; font-weight:800; }
 .profile-info { display:flex; flex-direction:column; gap:2px; }
