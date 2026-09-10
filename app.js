@@ -123,6 +123,8 @@ function initializeNavigation() {
     });
 }
 
+const PAGE_THEMES = ["home", "wheels", "promos", "subscription", "settings"];
+
 function navigate(pageName) {
     const target = document.getElementById(`page-${pageName}`);
     if (!target) return;
@@ -133,6 +135,13 @@ function navigate(pageName) {
     });
 
     target.classList.add("active");
+
+    const appEl = document.querySelector(".app");
+    if (appEl) {
+        PAGE_THEMES.forEach((name) => appEl.classList.remove(`theme-${name}`));
+        appEl.classList.add(`theme-${pageName}`);
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
