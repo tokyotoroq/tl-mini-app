@@ -69,8 +69,8 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 /* Полноценная контурная иллюстрация-баннер вверху страницы —
    серая "тушь" + красный акцент, как в логотипе, но только линии,
    без заливки. Занимает своё место в вёрстке, ничего не перекрывает. */
-.page-bg-art { position:absolute; top:4px; left:50%; transform:translateX(-50%); width:255px; z-index:0; pointer-events:none; opacity:.32; }
-.page-bg-art svg { width:100%; height:auto; display:block; fill:none; stroke:#c93440; }
+.page-bg-art { position:absolute; top:0; left:0; width:100%; aspect-ratio:500/210; overflow:hidden; z-index:0; pointer-events:none; opacity:.24; }
+.page-bg-art svg { width:100%; height:100%; display:block; }
 
 /* Старые фоновые иллюстрации — пока используются на остальных
    4 страницах, ждут переделки в стиле баннера выше. */
