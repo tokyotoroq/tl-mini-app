@@ -1,5 +1,5 @@
 :root {
-    --bg: #09090b;
+    --bg: #111114;
     --surface: #111113;
     --surface-2: #17171a;
     --surface-3: #1d1d21;
@@ -20,7 +20,21 @@ html, body { width: 100%; min-height: 100%; background: var(--bg); }
 body { color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x: hidden; }
 button, input { font: inherit; }
 button { border: 0; cursor: pointer; color: inherit; background: none; }
-.app { width: 100%; max-width: 480px; min-height: 100vh; margin: 0 auto; padding-bottom: calc(var(--nav-height) + 20px); background: var(--bg); position: relative; transition: background .35s ease; }
+.app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: calc(var(--nav-height) + 20px);
+    background-color: var(--bg);
+    background-image:
+        repeating-radial-gradient(circle at 17% 23%, rgba(255,255,255,.018) 0 1px, transparent 1px 4px),
+        repeating-radial-gradient(circle at 73% 67%, rgba(255,255,255,.012) 0 1px, transparent 1px 5px),
+        linear-gradient(rgba(255,255,255,.012), rgba(255,255,255,.012));
+    background-size: 7px 7px, 11px 11px, 100% 100%;
+    position: relative;
+    transition: background .35s ease;
+}
 
 /* Один мягкий градиент на страницу — красное аккуратно растворяется
    в чёрном, фон остаётся тёмным, просто с лёгким оттенком. */
@@ -48,11 +62,9 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
    в WebKit/Telegram сразу после первого проигрыша анимации). */
 .page-content { position:relative; z-index:1; }
 
-/* Полноценная контурная иллюстрация-баннер вверху страницы —
-   серая "тушь" + красный акцент, как в логотипе, но только линии,
-   без заливки. Занимает своё место в вёрстке, ничего не перекрывает. */
-.page-bg-art { position:absolute; top:0; left:0; width:100%; z-index:0; pointer-events:none; }
-.page-bg-art svg { width:100%; height:auto; display:block; }
+/* Фоновая SVG-иллюстрация отключена: оставляем спокойный тёмный VHS-подобный фон. */
+.page-bg-art,
+.page-bg-art svg { display:none !important; }
 
 /* Старые фоновые иллюстрации — пока используются на остальных
    4 страницах, ждут переделки в стиле баннера выше. */
