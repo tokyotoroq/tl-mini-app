@@ -1,25 +1,17 @@
-/* ==========================================================================
-   ЯПОНСКИЙ РЕТРО-СТИЛЬ ДЛЯ ЛК TL (ТОКИЙСКАЯ ЛУДОТРЯСКА)
-   ========================================================================== */
-
 :root {
-    /* Винтажный угольно-черный фон */
-    --bg: #0b0b0d;
-    --surface: #121215;
-    --surface-2: #18181d;
-    --surface-3: #202026;
-    --border: rgba(255, 255, 255, .05);
-    --border-strong: rgba(255, 255, 255, .11);
-    --text: #f5f5f7;
-    --text-secondary: #aaaaae;
-    --text-muted: #68686e;
-    
-    /* Трендовый оттенок спелой японской вишни (вместо неоново-красного) */
-    --accent: #921e28;
-    --accent-bright: #bc2c3d;
-    --accent-soft: rgba(188, 44, 61, 0.12);
-    
-    --green: #52a879;
+    --bg: #09090b;
+    --surface: #111113;
+    --surface-2: #17171a;
+    --surface-3: #1d1d21;
+    --border: rgba(255,255,255,.09);
+    --border-strong: rgba(255,255,255,.14);
+    --text: #f3f3f4;
+    --text-secondary: #b1b1b8;
+    --text-muted: #74747d;
+    --accent: #b52b36;
+    --accent-bright: #c93440;
+    --accent-soft: rgba(181,43,54,.13);
+    --green: #62b58a;
     --nav-height: 78px;
 }
 
@@ -28,104 +20,47 @@ html, body { width: 100%; min-height: 100%; background: var(--bg); }
 body { color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x: hidden; }
 button, input { font: inherit; }
 button { border: 0; cursor: pointer; color: inherit; background: none; }
-
-/* 
-   ГЛАВНЫЙ КОНТЕЙНЕР ПРИЛОЖЕНИЯ
-*/
-.app { 
-    width: 100%; 
-    max-width: 480px; 
-    min-height: 100vh; 
-    margin: 0 auto; 
-    padding-bottom: calc(var(--nav-height) + 20px); 
-    background: var(--bg); 
-    position: relative; 
-    transition: background .35s ease; 
-}
-
-/* 
-   ЭФФЕКТ СТАРЫЙ ПЛЁНКИ (Белые царапины, пыль и потёртости)
-   Использует реальное high-res фото пленочного зерна. Режим screen оставляет только белые артефакты.
-*/
-.app::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1000&auto=format&fit=crop'); 
-    background-size: cover;
-    background-position: center;
-    opacity: 0.09; /* Оптимальная видимость царапин, чтобы не рябило в глазах */
-    mix-blend-mode: screen; 
-    pointer-events: none; /* Пропускает клики сквозь себя */
-    z-index: 99; /* Накладывается поверх картинок и плашек */
-}
-
-/* 
-   ДЕКОРАТИВНАЯ ВЕТКА САКУРЫ
-   Аккуратно свисает в правом верхнем углу под шапкой
-*/
-.app::after {
-    content: "";
-    position: absolute;
-    top: 68px; 
-    right: -10px;
-    width: 150px;
-    height: 180px;
-    background-image: url('https://images.rawpixel.com/image_png_1000/czM6Ly9yYXdwaXxlbC1tZWRpYS1wcm9kdWN0aW9uL3BuZy9jaGFybGllL21pcy1zdXN0YWluYWJsZS1zdXN0YWluYWJpbGl0eS1wbmctY2hhcmxpZV9jcCP3813791-sl_l6k61lm8.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top right;
-    opacity: 0.15; /* Легкая прозрачность, чтобы ветка уходила на задний план и текст читался */
-    pointer-events: none;
-    z-index: 1; /* Находится под текстом карточек, но над фоном */
-}
-
-/* ==========================================================================
-   ОБНОВЛЕННЫЕ ГРАДИЕНТЫ СТРАНИЦ С ЭФФЕКТОМ ВИНЬЕТИРОВАНИЯ (ЗАТЕМНЕНИЯ КРАЕВ)
-   ========================================================================== */
+.app { width: 100%; max-width: 480px; min-height: 100vh; margin: 0 auto; padding-bottom: calc(var(--nav-height) + 20px); position: relative; transition: background .35s ease; }
 
 .app.theme-home {
     background:
-        radial-gradient(circle at 50% -12%, rgba(188, 44, 61, 0.16), transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(146, 30, 40, 0.08), transparent 45%),
-        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%), /* Винтажная виньетка */
+        radial-gradient(circle at 50% -8%, rgba(201,52,64,.15), transparent 40%),
+        radial-gradient(circle at 8% 92%, rgba(122,32,44,.08), transparent 46%),
+        url('https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=600&auto=format&fit=crop') center/cover no-repeat,
         var(--bg);
+    background-blend-mode: screen, normal, normal;
 }
-
 .app.theme-wheels {
     background:
-        radial-gradient(circle at 90% 5%, rgba(188, 44, 61, 0.18), transparent 40%),
-        radial-gradient(circle at 10% 70%, rgba(146, 30, 40, 0.1), transparent 45%),
-        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        radial-gradient(circle at 90% 2%, rgba(217,58,52,.17), transparent 38%),
+        radial-gradient(circle at 6% 66%, rgba(94,22,38,.10), transparent 44%),
+        url('https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=600&auto=format&fit=crop') center/cover no-repeat,
         var(--bg);
+    background-blend-mode: screen, normal, normal;
 }
-
 .app.theme-promos {
     background:
-        radial-gradient(circle at 85% 85%, rgba(200, 90, 40, 0.09), transparent 45%),
-        radial-gradient(circle at 15% 10%, rgba(188, 44, 61, 0.12), transparent 40%),
-        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        radial-gradient(circle at 85% 88%, rgba(201,104,44,.12), transparent 42%),
+        radial-gradient(circle at 12% 6%, rgba(160,36,46,.10), transparent 40%),
+        url('https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=600&auto=format&fit=crop') center/cover no-repeat,
         var(--bg);
+    background-blend-mode: screen, normal, normal;
 }
-
 .app.theme-subscription {
     background:
-        linear-gradient(160deg, rgba(146, 30, 40, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 105%, rgba(188, 44, 61, 0.12), transparent 45%),
-        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        linear-gradient(160deg, rgba(140,28,44,.15) 0%, transparent 48%),
+        radial-gradient(circle at 50% 105%, rgba(181,43,54,.09), transparent 46%),
+        url('https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=600&auto=format&fit=crop') center/cover no-repeat,
         var(--bg);
+    background-blend-mode: screen, normal, normal;
 }
-
 .app.theme-settings {
     background:
-        radial-gradient(circle at 50% 100%, rgba(146, 30, 40, 0.1), transparent 45%),
-        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        radial-gradient(circle at 50% 100%, rgba(110,28,38,.07), transparent 42%),
+        url('https://images.unsplash.com/photo-1599837565318-67429bde7162?q=80&w=600&auto=format&fit=crop') center/cover no-repeat,
         var(--bg);
+    background-blend-mode: screen, normal;
 }
-
-/* ==========================================================================
-   ОРИГИНАЛЬНАЯ ВЕРСТКА И КОМПОНЕНТЫ ИЗ ВАШЕГО СТАРОГО ФАЙЛА
-   ========================================================================== */
 
 .header { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.055); position: sticky; top: 0; z-index: 30; background: rgba(9,9,11,.92); backdrop-filter: blur(18px); }
 .header-title { display:flex; flex-direction:column; gap:2px; min-width:0; }
@@ -147,7 +82,7 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .access-card { padding:15px; }
 .access-main { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .access-actions { width:128px; display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
-.access-actions .small-accent-button { width:100%; min-height:34px; padding:9px 8px; flex-shrink:0; }
+.access-actions .small-accent-button { width:100%; min-height:34px; padding:9px 8px; }
 .card-label, .eyebrow { color:var(--text-muted); font-size:9px; letter-spacing:1.15px; font-weight:800; }
 .status-line { display:flex; align-items:center; gap:8px; margin-top:6px; }
 .status-line strong { font-size:14px; }
