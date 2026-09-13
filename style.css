@@ -1,17 +1,25 @@
+/* ==========================================================================
+   ЯПОНСКИЙ РЕТРО-СТИЛЬ ДЛЯ ЛК TL (ТОКИЙСКАЯ ЛУДОТРЯСКА)
+   ========================================================================== */
+
 :root {
-    --bg: #111114;
-    --surface: #111113;
-    --surface-2: #17171a;
-    --surface-3: #1d1d21;
-    --border: rgba(255,255,255,.09);
-    --border-strong: rgba(255,255,255,.14);
-    --text: #f3f3f4;
-    --text-secondary: #b1b1b8;
-    --text-muted: #74747d;
-    --accent: #b52b36;
-    --accent-bright: #c93440;
-    --accent-soft: rgba(181,43,54,.13);
-    --green: #62b58a;
+    /* Винтажный угольно-черный фон */
+    --bg: #0b0b0d;
+    --surface: #121215;
+    --surface-2: #18181d;
+    --surface-3: #202026;
+    --border: rgba(255, 255, 255, .05);
+    --border-strong: rgba(255, 255, 255, .11);
+    --text: #f5f5f7;
+    --text-secondary: #aaaaae;
+    --text-muted: #68686e;
+    
+    /* Трендовый оттенок спелой японской вишни (вместо неоново-красного) */
+    --accent: #921e28;
+    --accent-bright: #bc2c3d;
+    --accent-soft: rgba(188, 44, 61, 0.12);
+    
+    --green: #52a879;
     --nav-height: 78px;
 }
 
@@ -20,32 +28,106 @@ html, body { width: 100%; min-height: 100%; background: var(--bg); }
 body { color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x: hidden; }
 button, input { font: inherit; }
 button { border: 0; cursor: pointer; color: inherit; background: none; }
-.app {
-    width: 100%;
-    max-width: 480px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding-bottom: calc(var(--nav-height) + 20px);
-    background-color: var(--bg);
-    background-image:
-        repeating-radial-gradient(circle at 17% 23%, rgba(255,255,255,.018) 0 1px, transparent 1px 4px),
-        repeating-radial-gradient(circle at 73% 67%, rgba(255,255,255,.012) 0 1px, transparent 1px 5px),
-        linear-gradient(rgba(255,255,255,.012), rgba(255,255,255,.012));
-    background-size: 7px 7px, 11px 11px, 100% 100%;
-    position: relative;
-    transition: background .35s ease;
+
+/* 
+   ГЛАВНЫЙ КОНТЕЙНЕР ПРИЛОЖЕНИЯ
+*/
+.app { 
+    width: 100%; 
+    max-width: 480px; 
+    min-height: 100vh; 
+    margin: 0 auto; 
+    padding-bottom: calc(var(--nav-height) + 20px); 
+    background: var(--bg); 
+    position: relative; 
+    transition: background .35s ease; 
 }
 
-/* Один мягкий градиент на страницу — красное аккуратно растворяется
-   в чёрном, фон остаётся тёмным, просто с лёгким оттенком. */
-.app.theme-home,
-.app.theme-wheels,
-.app.theme-promos,
-.app.theme-subscription,
-.app.theme-settings {
-    background: var(--bg);
+/* 
+   ЭФФЕКТ СТАРЫЙ ПЛЁНКИ (Белые царапины, пыль и потёртости)
+   Использует реальное high-res фото пленочного зерна. Режим screen оставляет только белые артефакты.
+*/
+.app::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1000&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.09; /* Оптимальная видимость царапин, чтобы не рябило в глазах */
+    mix-blend-mode: screen; 
+    pointer-events: none; /* Пропускает клики сквозь себя */
+    z-index: 99; /* Накладывается поверх картинок и плашек */
 }
-.header { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.055); position: sticky; top: 0; z-index: 30; background: rgba(9,9,11,.90); backdrop-filter: blur(18px); }
+
+/* 
+   ДЕКОРАТИВНАЯ ВЕТКА САКУРЫ
+   Аккуратно свисает в правом верхнем углу под шапкой
+*/
+.app::after {
+    content: "";
+    position: absolute;
+    top: 68px; 
+    right: -10px;
+    width: 150px;
+    height: 180px;
+    background-image: url('https://images.rawpixel.com/image_png_1000/czM6Ly9yYXdwaXxlbC1tZWRpYS1wcm9kdWN0aW9uL3BuZy9jaGFybGllL21pcy1zdXN0YWluYWJsZS1zdXN0YWluYWJpbGl0eS1wbmctY2hhcmxpZV9jcCP3813791-sl_l6k61lm8.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.15; /* Легкая прозрачность, чтобы ветка уходила на задний план и текст читался */
+    pointer-events: none;
+    z-index: 1; /* Находится под текстом карточек, но над фоном */
+}
+
+/* ==========================================================================
+   ОБНОВЛЕННЫЕ ГРАДИЕНТЫ СТРАНИЦ С ЭФФЕКТОМ ВИНЬЕТИРОВАНИЯ (ЗАТЕМНЕНИЯ КРАЕВ)
+   ========================================================================== */
+
+.app.theme-home {
+    background:
+        radial-gradient(circle at 50% -12%, rgba(188, 44, 61, 0.16), transparent 50%),
+        radial-gradient(circle at 10% 90%, rgba(146, 30, 40, 0.08), transparent 45%),
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%), /* Винтажная виньетка */
+        var(--bg);
+}
+
+.app.theme-wheels {
+    background:
+        radial-gradient(circle at 90% 5%, rgba(188, 44, 61, 0.18), transparent 40%),
+        radial-gradient(circle at 10% 70%, rgba(146, 30, 40, 0.1), transparent 45%),
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        var(--bg);
+}
+
+.app.theme-promos {
+    background:
+        radial-gradient(circle at 85% 85%, rgba(200, 90, 40, 0.09), transparent 45%),
+        radial-gradient(circle at 15% 10%, rgba(188, 44, 61, 0.12), transparent 40%),
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        var(--bg);
+}
+
+.app.theme-subscription {
+    background:
+        linear-gradient(160deg, rgba(146, 30, 40, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 105%, rgba(188, 44, 61, 0.12), transparent 45%),
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        var(--bg);
+}
+
+.app.theme-settings {
+    background:
+        radial-gradient(circle at 50% 100%, rgba(146, 30, 40, 0.1), transparent 45%),
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.55) 100%),
+        var(--bg);
+}
+
+/* ==========================================================================
+   ОРИГИНАЛЬНАЯ ВЕРСТКА И КОМПОНЕНТЫ ИЗ ВАШЕГО СТАРОГО ФАЙЛА
+   ========================================================================== */
+
+.header { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.055); position: sticky; top: 0; z-index: 30; background: rgba(9,9,11,.92); backdrop-filter: blur(18px); }
 .header-title { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .header-title strong { font-size: 15px; font-weight: 800; }
 .header-title span { color: var(--text-muted); font-size: 10px; }
@@ -53,26 +135,9 @@ button { border: 0; cursor: pointer; color: inherit; background: none; }
 svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
 .icon-button svg { width:19px; height:19px; color:var(--text-secondary); }
 .content { padding: 18px 15px 8px; }
-.page { display:none; animation: pageIn .16s ease-out; position:relative; overflow:hidden; }
+.page { display:none; animation: pageIn .16s ease-out; }
 .page.active { display:block; }
 @keyframes pageIn { from { opacity:.4; transform:translateY(3px); } to { opacity:1; transform:none; } }
-
-/* Контент страницы всегда поверх иллюстрации — надёжнее, чем
-   отрицательный z-index (тот в связке с анимацией .page отваливается
-   в WebKit/Telegram сразу после первого проигрыша анимации). */
-.page-content { position:relative; z-index:1; }
-
-/* Фоновая SVG-иллюстрация отключена: оставляем спокойный тёмный VHS-подобный фон. */
-.page-bg-art,
-.page-bg-art svg { display:none !important; }
-
-/* Старые фоновые иллюстрации — пока используются на остальных
-   4 страницах, ждут переделки в стиле баннера выше. */
-.page-illustration { display:none !important; }
-.illustration-kazaguruma { top:-8px; right:-10px; width:150px; height:150px; opacity:.20; stroke-width:1.3; }
-.illustration-sakura { top:0; right:0; width:220px; height:180px; opacity:.22; stroke-width:1.1; }
-.illustration-torii { top:14px; left:-22px; width:210px; height:170px; opacity:.19; stroke-width:1.6; }
-.illustration-lantern { right:14px; bottom:0; width:100px; height:150px; opacity:.18; stroke-width:1.2; }
 .profile-row { display:flex; align-items:center; gap:11px; margin: 2px 1px 16px; }
 .avatar-placeholder { width:42px; height:42px; border-radius:13px; display:flex; align-items:center; justify-content:center; background:var(--surface-3); border:1px solid var(--border); color:var(--accent-bright); font-size:16px; font-weight:800; }
 .profile-info { display:flex; flex-direction:column; gap:2px; }
@@ -82,7 +147,7 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .access-card { padding:15px; }
 .access-main { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .access-actions { width:128px; display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
-.access-actions .small-accent-button { width:100%; min-height:34px; padding:9px 8px; }
+.access-actions .small-accent-button { width:100%; min-height:34px; padding:9px 8px; flex-shrink:0; }
 .card-label, .eyebrow { color:var(--text-muted); font-size:9px; letter-spacing:1.15px; font-weight:800; }
 .status-line { display:flex; align-items:center; gap:8px; margin-top:6px; }
 .status-line strong { font-size:14px; }
@@ -207,7 +272,7 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .switch input:checked + span { background:var(--accent-soft); border-color:rgba(181,43,54,.5); }
 .switch input:checked + span::after { transform:translateX(16px); background:var(--accent-bright); }
 .account-card { display:flex; align-items:center; gap:10px; padding:12px; margin-top:9px; }
-.bottom-nav { position:fixed; left:50%; bottom:8px; transform:translateX(-50%); width:min(480px, calc(100% - 16px)); height:70px; display:grid; grid-template-columns:repeat(5,1fr); padding:5px; background:rgba(18,18,21,.94); border:1px solid var(--border-strong); border-radius:17px; backdrop-filter:blur(20px); z-index:50; box-shadow:0 10px 35px rgba(0,0,0,.35); }
+.bottom-nav { position:fixed; left:50%; bottom:8px; transform:translateX(-50%); width:min(480px, calc(100% - 16px)); height:70px; display:grid; grid-template-columns:repeat(5,1fr); padding:5px; background:rgba(18,18,21,.96); border:1px solid var(--border-strong); border-radius:17px; backdrop-filter:blur(20px); z-index:50; box-shadow:0 10px 35px rgba(0,0,0,.35); }
 .nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; border-radius:12px; color:var(--text-muted); min-width:0; }
 .nav-item svg { width:19px; height:19px; }
 .nav-item small { font-size:8px; font-weight:700; }
