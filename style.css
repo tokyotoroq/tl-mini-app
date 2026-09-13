@@ -24,30 +24,12 @@ button { border: 0; cursor: pointer; color: inherit; background: none; }
 
 /* Один мягкий градиент на страницу — красное аккуратно растворяется
    в чёрном, фон остаётся тёмным, просто с лёгким оттенком. */
-.app.theme-home {
-    background:
-        radial-gradient(ellipse 130% 60% at 50% 0%, rgba(201,52,64,.16), transparent 72%),
-        var(--bg);
-}
-.app.theme-wheels {
-    background:
-        radial-gradient(ellipse 120% 55% at 100% 0%, rgba(201,52,64,.17), transparent 70%),
-        var(--bg);
-}
-.app.theme-promos {
-    background:
-        radial-gradient(ellipse 120% 55% at 100% 100%, rgba(196,96,46,.15), transparent 70%),
-        var(--bg);
-}
-.app.theme-subscription {
-    background:
-        linear-gradient(150deg, rgba(163,32,50,.15) 0%, transparent 62%),
-        var(--bg);
-}
+.app.theme-home,
+.app.theme-wheels,
+.app.theme-promos,
+.app.theme-subscription,
 .app.theme-settings {
-    background:
-        radial-gradient(ellipse 110% 50% at 50% 100%, rgba(120,30,40,.10), transparent 68%),
-        var(--bg);
+    background: var(--bg);
 }
 .header { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.055); position: sticky; top: 0; z-index: 30; background: rgba(9,9,11,.90); backdrop-filter: blur(18px); }
 .header-title { display:flex; flex-direction:column; gap:2px; min-width:0; }
@@ -69,7 +51,7 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 /* Полноценная контурная иллюстрация-баннер вверху страницы —
    серая "тушь" + красный акцент, как в логотипе, но только линии,
    без заливки. Занимает своё место в вёрстке, ничего не перекрывает. */
-.page-bg-art { position:absolute; top:0; left:0; width:100%; z-index:0; pointer-events:none; }
+.page-bg-art { position:absolute; top:120px; left:0; width:100%; z-index:0; pointer-events:none; opacity:.16; }
 .page-bg-art svg { width:100%; height:auto; display:block; }
 
 /* Старые фоновые иллюстрации — пока используются на остальных
