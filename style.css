@@ -3,8 +3,8 @@
     --surface: #111113;
     --surface-2: #17171a;
     --surface-3: #1d1d21;
-    --border: rgba(255,255,255,.09);
-    --border-strong: rgba(255,255,255,.14);
+    --border: rgba(255,255,255,.14);
+    --border-strong: rgba(255,255,255,.24);
     --text: #f3f3f4;
     --text-secondary: #b1b1b8;
     --text-muted: #74747d;
@@ -179,5 +179,5 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; border-radius:12px; color:var(--text-muted); min-width:0; }
 .nav-item svg { width:19px; height:19px; }
 .nav-item small { font-size:8px; font-weight:700; }
-.nav-item.active { color:#111113; background:var(--accent-soft); }
+.nav-item.active { color:#111113; background:var(--accent-soft); border:1px solid rgba(255,255,255,.4); }
 @media (min-width:481px) { body { padding:18px 0; } .app { border:1px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 20px 70px rgba(0,0,0,.45); min-height:calc(100vh - 36px); } .bottom-nav { bottom:18px; } }
