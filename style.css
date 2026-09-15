@@ -42,7 +42,7 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .content { padding: 18px 15px 8px; }
 .page { display:none; animation: pageIn .16s ease-out; }
 .page.active { display:block; }
-@keyframes pageIn { from { opacity:.4; transform:translateY(3px); } to { opacity:1; transform:none; } }
+@keyframes pageIn { from { opacity:.4; } to { opacity:1; } }
 .profile-row { display:flex; align-items:center; gap:11px; margin: 2px 1px 16px; }
 .avatar-placeholder { width:42px; height:42px; border-radius:13px; display:flex; align-items:center; justify-content:center; background:var(--surface-3); border:1px solid var(--border); color:var(--accent-bright); font-size:16px; font-weight:800; }
 .profile-info { display:flex; flex-direction:column; gap:2px; }
