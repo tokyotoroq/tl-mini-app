@@ -24,7 +24,10 @@ button { border: 0; cursor: pointer; color: inherit; background: none; }
     width: 100%; max-width: 480px; min-height: 100vh; margin: 0 auto;
     padding-bottom: calc(var(--nav-height) + 20px);
     position: relative;
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: url("grain.png");
+    background-size: 160px 160px;
+    background-repeat: repeat;
 }
 .header { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.055); position: sticky; top: 0; z-index: 30; background: rgba(9,9,11,.92); backdrop-filter: blur(18px); }
 .header::after { content:""; position:absolute; left:50%; bottom:-1px; transform:translateX(-50%); width:120px; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); }
@@ -187,16 +190,3 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .nav-item.active { color:var(--accent-bright); background:var(--accent-soft); border:1px solid rgba(255,255,255,.4); }
 @media (min-width:481px) { body { padding:18px 0; } .app { border:1px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 20px 70px rgba(0,0,0,.45); min-height:calc(100vh - 36px); } .bottom-nav { bottom:18px; } }
 
-/* Лёгкий шум "старой плёнки" поверх всего интерфейса — только зерно,
-   без смены цвета и без новых объектов. Не ловит клики. */
-.crt-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    pointer-events: none;
-    background-image:
-        url("grain.png"),
-        repeating-linear-gradient(rgba(255,255,255,.025) 0px, transparent 1px, transparent 3px);
-    background-size: 160px 160px, auto;
-    opacity: .55;
-}
