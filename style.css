@@ -25,7 +25,7 @@ button { border: 0; cursor: pointer; color: inherit; background: none; }
     padding-bottom: calc(var(--nav-height) + 20px);
     position: relative;
     background-color: var(--bg);
-    background-image: url("grain.png");
+    background-image: url("grain.png?v=2");
     background-size: 160px 160px;
     background-repeat: repeat;
 }
@@ -53,6 +53,138 @@ svg { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; st
 .profile-info strong { font-size:15px; }
 .profile-info span { color:var(--text-muted); font-size:11px; text-shadow:0 1px 4px rgba(0,0,0,.85); }
 .card { background:var(--surface); border:1px solid var(--border); border-radius:15px; }
+
+/* Деликие веточки сакуры — только на отдельных блоках, без изменения разметки. */
+#page-home .access-card,
+#page-home #home-promos-status,
+#page-wheels .stats-grid .stat-card:first-child,
+#page-wheels .wheel-list .wheel-row:nth-child(2),
+#page-promos .promo-list .promo-card:nth-child(1),
+#page-subscription .subscription-card,
+#page-settings .settings-card {
+    position: relative;
+    overflow: hidden;
+}
+
+#page-home .access-card::after,
+#page-home #home-promos-status::after,
+#page-wheels .stats-grid .stat-card:first-child::after,
+#page-wheels .wheel-list .wheel-row:nth-child(2)::after,
+#page-promos .promo-list .promo-card:nth-child(1)::after,
+#page-subscription .subscription-card::after,
+#page-settings .settings-card::after {
+    content: "";
+    position: absolute;
+    width: 132px;
+    height: 54px;
+    background: url("sakura.png") center / contain no-repeat;
+    opacity: .44;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Разные места и небольшие повороты, чтобы веточки не выглядели одинаково. */
+#page-home .access-card::after {
+    left: -4px;
+    top: -4px;
+    transform: rotate(2deg);
+}
+#page-home #home-promos-status::after {
+    right: -10px;
+    bottom: -5px;
+    transform: rotate(178deg);
+}
+#page-wheels .stats-grid .stat-card:first-child::after {
+    right: -12px;
+    top: -6px;
+    transform: rotate(176deg);
+    width: 112px;
+    height: 47px;
+}
+#page-wheels .wheel-list .wheel-row:nth-child(2)::after {
+    left: -10px;
+    bottom: -6px;
+    transform: rotate(4deg);
+    width: 116px;
+    height: 48px;
+}
+#page-promos .promo-list .promo-card:nth-child(1)::after {
+    right: -12px;
+    top: -6px;
+    transform: rotate(180deg);
+    width: 118px;
+    height: 49px;
+}
+#page-subscription .subscription-card::after {
+    left: -10px;
+    bottom: -7px;
+    transform: rotate(3deg);
+    width: 128px;
+    height: 52px;
+}
+#page-settings .settings-card::after {
+    right: -10px;
+    top: -7px;
+    transform: rotate(177deg);
+    width: 120px;
+    height: 50px;
+}
+
+/* Контент карточек всегда поверх декоративной веточки. */
+#page-home .access-card > *,
+#page-home #home-promos-status > *,
+#page-wheels .stats-grid .stat-card:first-child > *,
+#page-wheels .wheel-list .wheel-row:nth-child(2) > *,
+#page-promos .promo-list .promo-card:nth-child(1) > *,
+#page-subscription .subscription-card > *,
+#page-settings .settings-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Sakura accents — decorative layer only, does not change layout or move content. */
+.access-card, #home-wheels-status, #home-promos-status {
+    position:relative;
+    overflow:hidden;
+}
+.access-card::before, #home-wheels-status::before, #home-promos-status::before {
+    content:"";
+    position:absolute;
+    inset:auto;
+    pointer-events:none;
+    z-index:0;
+    background:url("sakura.png") no-repeat;
+    background-size:contain;
+}
+.access-card::before {
+    left:-34px;
+    top:-43px;
+    width:180px;
+    height:100px;
+    transform:rotate(-7deg);
+    opacity:.55;
+}
+#home-wheels-status::before {
+    right:-25px;
+    bottom:-36px;
+    width:145px;
+    height:75px;
+    transform:rotate(180deg);
+    opacity:.42;
+}
+#home-promos-status::before {
+    left:-29px;
+    top:-39px;
+    width:140px;
+    height:72px;
+    transform:scaleX(-1) rotate(-7deg);
+    opacity:.42;
+}
+.access-card > *, #home-wheels-status > *, #home-promos-status > * {
+    position:relative;
+    z-index:1;
+}
 .access-card { padding:15px; }
 .access-main { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .access-actions { width:128px; display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
