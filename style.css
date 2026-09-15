@@ -248,6 +248,33 @@ svg {
     transform: rotate(25deg) !important;
 }
 
+/* Отдельная независимая веточка для карточки Статуса доступа */
+#page-home .access-card::after {
+    content: "" !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    z-index: 99 !important;
+
+    /* Выводим на самый передний план */
+    /* Настраивай прозрачность здесь (сделал 40% для теста) */
+    opacity: 1 !important;
+
+    /* Размеры картинки */
+    width: 110px !important;
+    height: 100px !important;
+
+    /* ---- ВОТ ЭТА СТРОКА СБРОСИТ ЛЕВЫЙ КРАЙ ---- */
+    left: auto !important;
+
+    /* Точное положение по микронам внутри этой карточки */
+    right: 22.4rem !important;
+    top: -2.7rem !important;
+    background: url("sakura.png") center / contain no-repeat !important;
+
+    /* Поворот (поставил 120 градусов, чтобы она смотрела красиво в угол) */
+    transform: rotate(-154deg) !important;
+}
+
 #page-home .access-card > *,
 #page-home #home-wheels-status > *,
 #page-home #home-promos-status > *,
