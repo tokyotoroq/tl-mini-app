@@ -248,31 +248,38 @@ svg {
     transform: rotate(25deg) !important;
 }
 
-/* Отдельная независимая веточка для карточки Статуса доступа */
+/* 1. ЭТО СТИЛЬ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ (Будет работать в Telegram) */
 #page-home .access-card::after {
     content: "" !important;
     position: absolute !important;
     pointer-events: none !important;
     z-index: 99 !important;
-
-    /* Выводим на самый передний план */
-    /* Настраивай прозрачность здесь (сделал 40% для теста) */
     opacity: 1 !important;
-
-    /* Размеры картинки */
     width: 110px !important;
     height: 100px !important;
-
-    /* ---- ВОТ ЭТА СТРОКА СБРОСИТ ЛЕВЫЙ КРАЙ ---- */
     left: auto !important;
 
-    /* Точное положение по микронам внутри этой карточки */
-    right: 22.4rem !important;
+    /* Координаты строго для узкого экрана смартфона */
+    right: 55% !important;
     top: -2.7rem !important;
     background: url("sakura.png") center / contain no-repeat !important;
-
-    /* Поворот (поставил 120 градусов, чтобы она смотрела красиво в угол) */
     transform: rotate(-154deg) !important;
+}
+
+/* 2. ЭТО КОРРЕКЦИЯ ДЛЯ БОЛЬШИХ МОНИТОРОВ ПК (Чтобы в Pinegrow всё стояло ровно) */
+@media (min-width: 481px) {
+    #page-home .access-card::after {
+        /* Твои оригинальные настройки для ПК возвращаются назад */
+        right: 22.4rem !important;
+    }
+}
+
+/* 3. ПРОБИВАЕМ ТЕКСТУРНЫЙ ШУМ ДЛЯ СМАРТФОНА */
+#page-home .content {
+    position: relative !important;
+    background-color: transparent !important;
+    background: linear-gradient(rgba(14, 14, 14, 0.94), rgba(14, 14, 14, 0.94)), 
+                url("grain.png") repeat !important;
 }
 
 #page-home .access-card > *,
