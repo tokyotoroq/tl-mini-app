@@ -231,15 +231,15 @@ svg {
     position: absolute !important;
     pointer-events: none !important;
     z-index: 1 !important;
-    opacity: .30 !important;
+    opacity: 1 !important;
 
     /* Жестко задаем размеры (высоту тоже сделали 60px) */
     width: 120px !important;
     height: 100px !important;
 
     /* Задаем положение в углу */
-    right: -20px !important;
-    top: 1px !important;
+    right: -19px !important;
+    top: -0.1rem !important;
 
     /* Центруем картинку внутри этой коробки */
     background: url("sakura.png") center / contain no-repeat !important;
