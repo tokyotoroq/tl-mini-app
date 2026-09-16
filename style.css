@@ -52,10 +52,10 @@ button {
 
     /* Делаем фон ещё капельку темнее для контраста */
     /* 🚀 ХАК ДВОЙНОГО ШУМА: Накладываем картинку дважды через запятую, чтобы сделать её жирнее и ярче */
-    background-image: url("grain.png?v-2"), url("grain.png?v-2") !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.01)), url("grain.png?v-2") !important;
 
     /* Задаем размер для обоих слоев шума */
-    background-size: 100x 100px, 280px 280px !important;
+    background-size: 100x 100px, 100px 100px !important;
     background-repeat: repeat, repeat !important;
 }
 
