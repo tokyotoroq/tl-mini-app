@@ -47,16 +47,16 @@ button {
 }
 
 .app {
-    width: 100%;
-    max-width: 480px;
     min-height: 100vh;
-    margin: 0 auto;
-    padding-bottom: calc(var(--nav-height) + 20px);
-    position: relative;
-    background-color: var(--bg);
-    background-image: url("grain.png?v=2");
-    background-size: 160px 160px;
-    background-repeat: repeat;
+    background-color: #0c0c0e !important;
+
+    /* Делаем фон ещё капельку темнее для контраста */
+    /* 🚀 ХАК ДВОЙНОГО ШУМА: Накладываем картинку дважды через запятую, чтобы сделать её жирнее и ярче */
+    background-image: url("grain.png?v-2"), url("grain.png?v-2") !important;
+
+    /* Задаем размер для обоих слоев шума */
+    background-size: 100x 100px, 280px 280px !important;
+    background-repeat: repeat, repeat !important;
 }
 
 .header {
@@ -272,14 +272,6 @@ svg {
         /* Твои оригинальные настройки для ПК возвращаются назад */
         right: 22.4rem !important;
     }
-}
-
-/* 3. ПРОБИВАЕМ ТЕКСТУРНЫЙ ШУМ ДЛЯ СМАРТФОНА */
-#page-home .content {
-    position: relative !important;
-    background-color: transparent !important;
-    background: linear-gradient(rgba(14, 14, 14, 0.94), rgba(14, 14, 14, 0.94)), 
-                url("grain.png") repeat !important;
 }
 
 #page-home .access-card > *,
