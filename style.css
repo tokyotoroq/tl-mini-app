@@ -1138,16 +1138,16 @@ svg {
     height: 250px !important;
 
     /* Координаты для левой стороны */
-    left: 20px !important;
-    top: 290px !important;
+    left: -50px !important;
+    top: 260px !important;
     background: url("petal.png") center / contain no-repeat !important;
 
     /* ПОЛЗУНОК ЯРКОСТИ И ЦВЕТА (МЕНЯЙ ЭТИ ЦИФРЫ):
        - grayscale(1) делает их серо-белыми.
        - brightness(1.8) — это яркость. Сделай 2.5, чтобы они стали чисто белыми, или 1.0, чтобы сделать темнее.
        - opacity(0.25) — это прозрачность. Сделай 0.50, чтобы сделать явными, или 0.10, чтобы еле заметными. */
-    filter: grayscale(1) brightness(1.7) opacity(0.80) !important;
-    transform: rotate(90deg) !important;
+    filter: grayscale(1) brightness(0.8) opacity(1) !important;
+    transform: rotate(50deg) !important;
 }
 
 /* ЛЕПЕСТОК 2 — Большой вихрь СПРАВА */
