@@ -1134,19 +1134,19 @@ svg {
 
     /* Возвращаем в видимую зону, но под карточки */
     z-index: 0 !important;
-    width: 300px !important;
-    height: 250px !important;
+    width: 200px !important;
+    height: 400px !important;
 
     /* Координаты для левой стороны */
-    left: -50px !important;
-    top: 260px !important;
+    left: -20px !important;
+    top: 200px !important;
     background: url("petal.png") center / contain no-repeat !important;
 
     /* ПОЛЗУНОК ЯРКОСТИ И ЦВЕТА (МЕНЯЙ ЭТИ ЦИФРЫ):
        - grayscale(1) делает их серо-белыми.
        - brightness(1.8) — это яркость. Сделай 2.5, чтобы они стали чисто белыми, или 1.0, чтобы сделать темнее.
        - opacity(0.25) — это прозрачность. Сделай 0.50, чтобы сделать явными, или 0.10, чтобы еле заметными. */
-    filter: grayscale(1) brightness(0.8) opacity(1) !important;
+    filter: grayscale(1) brightness(0.8) opacity(1.6) !important;
     transform: rotate(50deg) !important;
 }
 
@@ -1170,3 +1170,60 @@ svg {
     filter: grayscale(1) brightness(1.5) opacity(0.20) !important;
     transform: rotate(-30deg) !important;
 }
+
+/* ========================================================
+   НЕЗАВИСИМАЯ ВЕТОЧКА САКУРЫ ДЛЯ СТРАНИЦЫ КОЛЁС
+   ======================================================== */
+#page-wheels .stats-grid .stat-card:first-child::after {
+    content: "" !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    z-index: 99 !important;
+
+    /* На передний план внутри карточки */
+    /* Сочная стопроцентная яркость, как ты любишь */
+    opacity: 1 !important;
+
+    /* Начальные размеры (можешь менять) */
+    width: 100px !important;
+    height: 90px !important;
+
+    /* Сброс левого края */
+    left: auto !important;
+
+    /* 🌸 ТВОИ ПОЛЗУНКИ ДЛЯ ДВИЖЕНИЯ (меняй сотые доли rem или px) */
+    right: -13rem !important;
+    top: -2.4rem !important;
+    background: url("sakura.png") center / contain no-repeat !important;
+
+    /* Угол поворота для этой страницы */
+    transform: rotate(-206deg) scaleX(-1) !important;
+}
+
+/* ========================================================
+   ИДЕАЛЬНЫЙ ЛЕПЕСТОК ДЛЯ КОЛЁС В СВОБОДНОЙ ЗОНЕ
+   ======================================================== */
+#page-wheels::before {
+    content: "" !important;
+    position: fixed !important;
+    pointer-events: none !important;
+    z-index: 99 !important;
+
+    /* Возвращаем на передний план, чтобы ничего не исчезало */
+    /* Твои ручные настройки размеров и сочности */
+    opacity: 0.6 !important;
+    width: 250px !important;
+    height: 250px !important;
+
+    /* 🚀 НОВЫЕ КООРДИНАТЫ (ПРИЖИМАЕМ В ПРАВЫЙ НИЖНИЙ УГОЛ):
+       Тут он заполнит пустую чёрную дыру внизу экрана и не налезет на текст! */
+    left: auto !important;
+    right: -40px !important;
+    bottom: 300px !important;
+    background: url("petal.png") center / contain no-repeat !important;
+
+    /* Твои настройки цвета и наклона */
+    filter: grayscale(1) brightness(1.2) opacity(0.4) !important;
+    transform: rotate(60deg) !important;
+}
+
