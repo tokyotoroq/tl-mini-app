@@ -1118,60 +1118,6 @@ svg {
 }
 
 /* ========================================================
-   ИСПРАВЛЕННЫЕ ЛЕПЕСТКИ САКУРЫ (СЛОЙ-СЭНДВИЧ)
-   ======================================================== */
-/* Создаем изолированный слой, чтобы лепестки не проваливались под черный фон */
-#page-home .content {
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-/* ЛЕПЕСТОК 1 — Большой вихрь СЛЕВА */
-#page-home::before {
-    content: "" !important;
-    position: fixed !important;
-    pointer-events: none !important;
-
-    /* Возвращаем в видимую зону, но под карточки */
-    z-index: 0 !important;
-    width: 200px !important;
-    height: 400px !important;
-
-    /* Координаты для левой стороны */
-    left: -20px !important;
-    top: 200px !important;
-    background: url("petal.png") center / contain no-repeat !important;
-
-    /* ПОЛЗУНОК ЯРКОСТИ И ЦВЕТА (МЕНЯЙ ЭТИ ЦИФРЫ):
-       - grayscale(1) делает их серо-белыми.
-       - brightness(1.8) — это яркость. Сделай 2.5, чтобы они стали чисто белыми, или 1.0, чтобы сделать темнее.
-       - opacity(0.25) — это прозрачность. Сделай 0.50, чтобы сделать явными, или 0.10, чтобы еле заметными. */
-    filter: grayscale(1) brightness(0.8) opacity(1.6) !important;
-    transform: rotate(50deg) !important;
-}
-
-/* ЛЕПЕСТОК 2 — Большой вихрь СПРАВА */
-#page-home .content::after {
-    content: "" !important;
-    position: fixed !important;
-    pointer-events: none !important;
-
-    /* Возвращаем в видимую зону, но под карточки */
-    z-index: 0 !important;
-    width: 200px !important;
-    height: 200px !important;
-
-    /* Координаты для правой стороны */
-    right: -60px !important;
-    top: 450px !important;
-    background: url("petal.png") center / contain no-repeat !important;
-
-    /* Настройка цвета и прозрачности для второго вихря */
-    filter: grayscale(1) brightness(1.5) opacity(0.20) !important;
-    transform: rotate(-30deg) !important;
-}
-
-/* ========================================================
    НЕЗАВИСИМАЯ ВЕТОЧКА САКУРЫ ДЛЯ СТРАНИЦЫ КОЛЁС
    ======================================================== */
 #page-wheels .stats-grid .stat-card:first-child::after {
@@ -1192,7 +1138,7 @@ svg {
     left: auto !important;
 
     /* 🌸 ТВОИ ПОЛЗУНКИ ДЛЯ ДВИЖЕНИЯ (меняй сотые доли rem или px) */
-    right: -13rem !important;
+    right: -12.4rem !important;
     top: -2.4rem !important;
     background: url("sakura.png") center / contain no-repeat !important;
 
@@ -1200,30 +1146,33 @@ svg {
     transform: rotate(-206deg) scaleX(-1) !important;
 }
 
-/* ========================================================
-   ИДЕАЛЬНЫЙ ЛЕПЕСТОК ДЛЯ КОЛЁС В СВОБОДНОЙ ЗОНЕ
-   ======================================================== */
-#page-wheels::before {
+#page-home::before {
     content: "" !important;
     position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0 !important;
     pointer-events: none !important;
-    z-index: 99 !important;
+    background-image: url("koi.png") !important;
+    background-repeat: no-repeat !important;
 
-    /* Возвращаем на передний план, чтобы ничего не исчезало */
-    /* Твои ручные настройки размеров и сочности */
-    opacity: 0.6 !important;
-    width: 250px !important;
-    height: 250px !important;
+    /* ========================================================
+       1. 📏 ПОЛЗУНОК РАЗМЕРА КАРПИНКИ
+       ======================================================== */
+    background-size: 160% !important;
 
-    /* 🚀 НОВЫЕ КООРДИНАТЫ (ПРИЖИМАЕМ В ПРАВЫЙ НИЖНИЙ УГОЛ):
-       Тут он заполнит пустую чёрную дыру внизу экрана и не налезет на текст! */
-    left: auto !important;
-    right: -40px !important;
-    bottom: 300px !important;
-    background: url("petal.png") center / contain no-repeat !important;
+    /* Крути проценты (120%, 90% и т.д.), подбирая масштаб */
+    /* ========================================================
+       2. 🧭 ПОЛЗУНОК ПОЛОЖЕНИЯ (ЕСЛИ НАДО СДВИНУТЬ)
+       Первое значение — влево/вправо (center, 50%, 40%).
+       Второе значение — вверх/вниз (center, 50%, 60%).
+       ======================================================== */
+    background-position: center center !important;
 
-    /* Твои настройки цвета и наклона */
-    filter: grayscale(1) brightness(1.2) opacity(0.4) !important;
-    transform: rotate(60deg) !important;
+    /* ========================================================
+       3. 🎨 ПОЛЗУНОК ЦВЕТА И ПРОЗРАЧНОСТИ
+       ======================================================== */
+    filter: grayscale(1) brightness(0.8) opacity(0.08) !important;
 }
-
