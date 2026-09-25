@@ -1146,33 +1146,65 @@ svg {
     transform: rotate(-206deg) scaleX(-1) !important;
 }
 
+/* ========================================================
+   🎌 ФИНАЛЬНЫЙ ЯПОНСКИЙ АРТ-БЛОК ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
+   ======================================================== */
+/* 1. НАСТРОЙКИ САМОЙ ГЕЙШИ (ТЕПЕРЬ ЧЕТКО ВНАЧАЛЕ БЛОКА) */
 #page-home::before {
     content: "" !important;
     position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 0 !important;
+
+    /* Твои ручные размеры */
+    width: 300px !important;
+    height: 300px !important;
+
+    /* 🚀 УВОДИМ НА САМЫЙ НИЗ: Слой 1 заставит её сесть под карточки и текст! */
+    z-index: 1 !important;
     pointer-events: none !important;
-    background-image: url("koi.png") !important;
-    background-repeat: no-repeat !important;
+    background: url("geisha.png") center / contain no-repeat !important;
 
-    /* ========================================================
-       1. 📏 ПОЛЗУНОК РАЗМЕРА КАРПИНКИ
-       ======================================================== */
-    background-size: 160% !important;
+    /* Твои идеальные координаты положения */
+    left: auto !important;
+    right: 110px !important;
+    bottom: 320px !important;
 
-    /* Крути проценты (120%, 90% и т.д.), подбирая масштаб */
-    /* ========================================================
-       2. 🧭 ПОЛЗУНОК ПОЛОЖЕНИЯ (ЕСЛИ НАДО СДВИНУТЬ)
-       Первое значение — влево/вправо (center, 50%, 40%).
-       Второе значение — вверх/вниз (center, 50%, 60%).
-       ======================================================== */
-    background-position: center center !important;
+    /* Твои настройки цвета, контраста и прозрачности */
+    filter: invert(1) brightness(1) !important;
+    opacity: 0.2 !important;
+}
 
-    /* ========================================================
-       3. 🎨 ПОЛЗУНОК ЦВЕТА И ПРОЗРАЧНОСТИ
-       ======================================================== */
-    filter: grayscale(1) brightness(0.4) opacity(0.05) !important;
+/* 2. ПОЛЗУНОК ПРОЗРАЧНОСТИ ДЛЯ ТВОИХ КАРТОЧЕК */
+#page-home .card {
+    /* КРУТИ ПРОЗРАЧНОСТЬ ЗДЕСЬ:
+       Цифра 0.70 — это 70% плотности карточки.
+       - Сделай 0.45 или 0.50 — карточки станут прозрачнее, и гейша проявится сочнее.
+       - Сделай 0.90 — карточки станут темными, скрывая рисунок. */
+    background-color: rgba(10, 10, 12, 0.70) !important;
+
+    /* Аккуратная тонкая обводка, чтобы блоки не сливались при любой прозрачности */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+    /* 🚀 ПРИНУДИТЕЛЬНЫЙ СЛОЙ ДЛЯ КАРТОЧЕК: Садятся на слой 2 строго НАД гейшей! */
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 3. ВЫВОД БУКВ, ЦИФР И ИКОНОК НА ПЕРЕДНИЙ ПЛАН (С ЧЁРНОЙ ТЕНЬЮ) */
+#page-home .content p,
+#page-home .content span,
+#page-home .content blockquote,
+#page-home .content h1,
+#page-home .content h2,
+#page-home .content h3,
+#page-home .content a,
+#page-home .content i,
+#page-home .content svg {
+    /* 🚀 САМЫЙ ВЫСОКИЙ СЛОЙ ДЛЯ ТЕКСТА: Выныривает на передний план над карточками и линиями! */
+    position: relative !important;
+    z-index: 999 !important;
+
+    /* Хак черного контура вокруг букв, чтобы они идеально читались на белых линиях гейши */
+    text-shadow: 0 1px 3px #000000, 
+                 0 0 10px #000000, 
+                 0 0 5px #000000 !important;
 }
