@@ -1208,3 +1208,63 @@ svg {
                  0 0 10px #000000, 
                  0 0 5px #000000 !important;
 }
+
+/* ========================================================
+   MOBILE WEBVIEW STABILIZATION
+   Keeps Pinegrow and Telegram WebView visually consistent.
+   ======================================================== */
+.app {
+    position: relative;
+    overflow-x: hidden;
+    background-color: #0c0c0e !important;
+
+    /* Two differently-scaled copies make the very transparent grain.png
+       visible without turning the background grey. */
+    background-image: url("grain.png"),
+        url("grain.png") !important;
+    background-size: 160px 160px,
+        113px 113px !important;
+    background-position: 0 0,
+        37px 19px !important;
+    background-repeat: repeat,
+        repeat !important;
+}
+
+/* The old fixed+bottom positioning depended on WebView height. Telegram's
+   native header makes that viewport shorter than Pinegrow, so the geisha
+   jumped upward. Absolute top/left coordinates keep it in the same place. */
+#page-home::before {
+    position: absolute !important;
+    width: 300px !important;
+    height: 300px !important;
+    left: 8px !important;
+    right: auto !important;
+    top: 280px !important;
+    bottom: auto !important;
+    background: url("geisha.png") center / contain no-repeat !important;
+    filter: invert(1) brightness(1) !important;
+    opacity: .20 !important;
+}
+
+/* Restore visible, restrained card outlines on real phone displays. */
+.card,
+.channel-button,
+.tabs,
+.promo-tabs {
+    border-color: rgba(255, 255, 255, .17);
+}
+
+#page-home .card {
+    background-color: rgba(10, 10, 12, .74) !important;
+    border-color: rgba(255, 255, 255, .18) !important;
+}
+
+#page-home .access-card {
+    border-color: rgba(255, 255, 255, .21) !important;
+}
+
+@media (max-width: 380px) {
+    #page-home::before {
+        left: 2px !important;
+    }
+}
