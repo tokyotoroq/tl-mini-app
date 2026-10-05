@@ -1220,13 +1220,17 @@ svg {
 
     /* Two differently-scaled copies make the very transparent grain.png
        visible without turning the background grey. */
-    background-image: url("grain.png"),
+    background-image:
+        url("grain.png"),
         url("grain.png") !important;
-    background-size: 160px 160px,
+    background-size:
+        160px 160px,
         113px 113px !important;
-    background-position: 0 0,
+    background-position:
+        0 0,
         37px 19px !important;
-    background-repeat: repeat,
+    background-repeat:
+        repeat,
         repeat !important;
 }
 
@@ -1239,7 +1243,7 @@ svg {
     height: 300px !important;
     left: 8px !important;
     right: auto !important;
-    top: 280px !important;
+    top: 220px !important;
     bottom: auto !important;
     background: url("geisha.png") center / contain no-repeat !important;
     filter: invert(1) brightness(1) !important;

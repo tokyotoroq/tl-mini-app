@@ -1,0 +1,326 @@
+/* =========================================================
+   ONI THEME — светлая бумага, маска они, чёрно-красные акценты
+   ========================================================= */
+:root {
+    --bg: #e9e7e3;
+    --paper: rgba(250, 249, 246, .72);
+    --ink: #121212;
+    --ink-soft: #3a3a3a;
+    --muted: #6b6b6b;
+    --red: #a3121a;
+    --red-bright: #d0141f;
+    --line: #151515;
+    --surface: rgba(250,249,246,.72);
+    --surface-2: rgba(250,249,246,.8);
+    --surface-3: #fff;
+    --border: #151515;
+    --border-strong: #151515;
+    --text: #121212;
+    --text-secondary: #3a3a3a;
+    --text-muted: #6b6b6b;
+    --accent: #121212;
+    --accent-bright: #121212;
+    --accent-soft: transparent;
+}
+
+html, body { background: var(--bg) !important; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; color: var(--ink); }
+
+/* ---------- фон ---------- */
+.app {
+    position: relative;
+    background-color: var(--bg) !important;
+    background-image: url("bg-oni.jpg") !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+/* светлая техническая полоса слева */
+.app::before {
+    content: "";
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 22px, rgba(0,0,0,.35) 22px 23px, transparent 23px 40px),
+        #f4f3f0;
+    border-right: 1px solid rgba(0,0,0,.18);
+}
+
+/* гейша и старые ветки сакуры отключены */
+#page-home::before { content: none !important; display: none !important; }
+.card::after, .card::before { background-image: none !important; }
+
+/* ---------- шапка ---------- */
+.header {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: 0 !important;
+    position: relative !important;
+    padding: 14px 18px 6px 26px !important;
+    height: auto !important;
+}
+.header::after { display: none !important; }
+.header-title strong { font-size: 16px !important; font-weight: 800 !important; color: var(--ink) !important; letter-spacing: -.01em; }
+.header-title span { font-size: 11px !important; color: var(--ink-soft) !important; letter-spacing: .08em; }
+.icon-button {
+    background: var(--paper) !important;
+    border: 1.5px solid var(--line) !important;
+    border-radius: 0 !important;
+    color: var(--ink) !important;
+}
+
+/* ---------- контент ---------- */
+.content { position: relative; z-index: 2; padding-left: 26px !important; padding-right: 14px !important; }
+
+.oni-mark {
+    position: absolute;
+    right: 8px;
+    top: -54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    z-index: 0;
+}
+.oni-mark span {
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif CJK JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: rgba(30,30,30,.45);
+}
+.oni-mark i {
+    font-style: normal;
+    width: 22px; height: 22px;
+    display: grid; place-items: center;
+    font-size: 8px; line-height: 1;
+    writing-mode: vertical-rl;
+    color: var(--red);
+    border: 1.5px solid var(--red);
+    border-radius: 3px;
+    opacity: .75;
+}
+
+/* ---------- профиль как карточка ---------- */
+.profile-row {
+    position: relative;
+    width: 68%;
+    padding: 12px 14px 12px 16px !important;
+    margin: 18px 0 14px !important;
+    background: var(--paper);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1.5px solid var(--line);
+    box-shadow: inset 3px 0 0 var(--red);
+}
+.profile-row .avatar-placeholder { display: none !important; }
+.profile-info { display: flex; flex-direction: column-reverse; gap: 2px; }
+.profile-info strong { font-size: 19px !important; font-weight: 800 !important; color: var(--ink) !important; }
+.profile-info span { font-size: 13px !important; color: var(--ink-soft) !important; }
+
+/* ---------- окна ---------- */
+#page-home .card,
+.profile-row {
+    --c: var(--ink);
+    background-image:
+        linear-gradient(var(--c),var(--c)), linear-gradient(var(--c),var(--c)),
+        linear-gradient(var(--c),var(--c)), linear-gradient(var(--c),var(--c)) !important;
+    background-size: 10px 1.5px, 1.5px 10px, 10px 1.5px, 1.5px 10px !important;
+    background-position: 12px 9px, 12px 9px, 12px calc(100% - 9px), 12px calc(100% - 18px) !important;
+    background-repeat: no-repeat !important;
+}
+#page-home .card {
+    position: relative;
+    background-color: var(--paper) !important;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1.5px solid var(--line) !important;
+    border-radius: 0 !important;
+    box-shadow: inset 3px 0 0 var(--red) !important;
+    color: var(--ink) !important;
+    overflow: visible !important;
+}
+/* маленькие 壱 / 弐 в правых углах */
+#page-home .card::before,
+#page-home .card::after,
+.profile-row::before,
+.profile-row::after {
+    position: absolute !important;
+    right: 7px !important;
+    left: auto !important;
+    width: auto !important; height: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    font-size: 9px; line-height: 1;
+    color: var(--ink);
+    padding: 0 0 2px 2px;
+    background: none !important;
+    pointer-events: none;
+    font-family: "Noto Serif CJK JP", serif;
+}
+#page-home .card::before, .profile-row::before { content: "壱" !important; top: 6px !important; bottom: auto !important; border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+#page-home .card::after, .profile-row::after { content: "弐" !important; bottom: 6px !important; top: auto !important; border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+
+/* статус доступа */
+#page-home .access-card { padding: 16px 16px 14px 20px !important; margin-bottom: 30px !important; }
+#page-home .card-label { color: var(--ink) !important; font-size: 12px !important; letter-spacing: .02em; font-weight: 500; }
+#page-home .card-label::after { content: "..."; }
+#page-home .status-line strong { font-size: 18px !important; color: var(--ink) !important; font-weight: 800 !important; }
+#page-home .status-dot { width: 11px !important; height: 11px !important; background: var(--red-bright) !important; box-shadow: 0 0 6px rgba(208,20,31,.6) !important; }
+.access-meta { border-top: 0 !important; padding-top: 6px !important; margin-top: 0 !important; }
+.access-meta span { color: var(--ink-soft) !important; font-size: 12px !important; }
+.access-meta strong { color: var(--red) !important; font-size: 17px !important; font-weight: 800 !important; }
+
+.katana { display: block; width: 100%; height: 22px; margin: 12px 0 8px; overflow: visible; }
+.katana .blade { fill: #f4f4f2; stroke: #111; stroke-width: 1.2; }
+.katana .edge { fill: none; stroke: #888; stroke-width: .6; }
+.katana .habaki { fill: #111; }
+.katana .tsuba { fill: #111; }
+.katana .tsuka { fill: #111; }
+.katana .ito { fill: #f4f4f2; }
+.katana .kashira { fill: #111; }
+
+/* кнопки */
+#page-home .small-accent-button {
+    position: relative;
+    background: rgba(255,255,255,.55) !important;
+    color: var(--ink) !important;
+    border: 1.5px solid var(--line) !important;
+    border-radius: 0 !important;
+    font-weight: 800 !important;
+    font-size: 13px !important;
+    padding: 9px 14px !important;
+    box-shadow: none !important;
+}
+#page-home .small-accent-button::after {
+    content: "";
+    position: absolute;
+    right: -1.5px; bottom: -1.5px;
+    width: 8px; height: 8px;
+    background: var(--red);
+}
+
+/* заголовки разделов */
+.section-heading h2 { color: var(--ink) !important; font-size: 16px !important; font-weight: 800 !important; }
+.text-button { color: var(--ink) !important; font-weight: 800 !important; }
+.section-heading { padding-right: 2px; }
+
+/* строки колёс/акций */
+#page-home .compact-item { padding: 16px 14px 16px 20px !important; min-height: 74px; }
+#page-home .compact-item .item-main strong { color: var(--ink) !important; font-size: 15px !important; font-weight: 800 !important; }
+#page-home .compact-item .item-main span { color: var(--ink-soft) !important; }
+#page-home .compact-item .arrow { color: var(--red) !important; font-size: 18px; margin-right: 10px; }
+#page-home .item-icon {
+    position: relative;
+    width: 38px !important; height: 38px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: var(--ink) !important;
+    box-shadow: none !important;
+    --c: var(--ink);
+    background-image:
+        linear-gradient(var(--c),var(--c)), linear-gradient(var(--c),var(--c)),
+        linear-gradient(var(--c),var(--c)), linear-gradient(var(--c),var(--c)),
+        linear-gradient(var(--c),var(--c)), linear-gradient(var(--c),var(--c)) !important;
+    background-size: 8px 1.5px, 1.5px 8px, 8px 1.5px, 1.5px 8px, 8px 1.5px, 1.5px 8px !important;
+    background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100% !important;
+    background-repeat: no-repeat !important;
+}
+#page-home .item-icon::after {
+    content: "";
+    position: absolute; right: 0; bottom: 0;
+    width: 7px; height: 7px; background: var(--red);
+}
+#page-home .item-icon svg { stroke: var(--ink) !important; color: var(--ink) !important; }
+
+/* ---------- нижнее меню ---------- */
+.bottom-nav {
+    background: rgba(250,249,246,.95) !important;
+    border: 1.5px solid var(--line) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12) !important;
+    left: calc(50% + 6px) !important;
+    width: min(480px, calc(100% - 34px)) !important;
+}
+.nav-item { color: var(--ink) !important; background: transparent !important; border: 0 !important; position: relative; }
+.nav-item svg { stroke: var(--ink) !important; color: var(--ink) !important; position: relative; z-index: 1; }
+.nav-item small, .nav-item span { color: var(--ink) !important; font-size: 10px !important; font-weight: 600 !important; }
+.nav-item.active { background: transparent !important; border: 0 !important; }
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 54px; height: 54px;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    border-left-color: rgba(163,18,26,.45);
+    box-shadow: inset 0 0 0 1px rgba(163,18,26,.12);
+    opacity: .9;
+}
+.nav-item.active small, .nav-item.active span { font-weight: 800 !important; }
+
+/* ---------- раскладка (правки) ---------- */
+.header .icon-button { display: none !important; }
+.oni-mark { top: -62px; right: 6px; }
+.profile-row { padding: 14px 14px 12px 22px !important; }
+.profile-info span { line-height: 1.2; }
+
+#page-home .access-main { display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 10px !important; }
+#page-home .status-line { display: flex; align-items: center; gap: 8px; margin-top: 8px; white-space: nowrap; }
+#page-home .status-line strong { font-size: 17px !important; }
+#page-home .access-meta {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    align-items: end !important;
+    gap: 22px !important;
+}
+#page-home .access-meta > div:first-child,
+#page-home .group-access-info { display: flex !important; flex-direction: column !important; gap: 4px !important; }
+#page-home .group-access-meta { display: flex !important; justify-content: space-between !important; align-items: flex-end !important; gap: 10px !important; }
+#page-home .small-accent-button { white-space: nowrap; }
+#page-home .compact-item { display: flex !important; align-items: center !important; gap: 14px !important; }
+#page-home .compact-item .item-main { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+#page-home .compact-item .item-main strong { font-size: 14px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#page-home .compact-item .item-icon { margin-left: 4px; flex: 0 0 38px; display: grid; place-items: center; }
+#page-home .compact-item .item-icon svg { width: 20px; height: 20px; }
+.section-heading { margin-top: 18px !important; margin-bottom: 8px !important; }
+#page-home { padding-bottom: 110px !important; }
+.content { padding-left: 22px !important; padding-right: 12px !important; }
+#page-home .access-card { padding: 16px 12px 14px 18px !important; }
+#page-home .access-main > div:first-child { flex: 1; min-width: 0; }
+#page-home .access-actions { flex: none; margin-top: 2px; }
+#page-home .status-line strong { font-size: 15px !important; }
+#page-home .small-accent-button { font-size: 12px !important; padding: 8px 11px !important; }
+#page-home .access-meta strong { white-space: nowrap; font-size: 16px !important; }
+#page-home .access-meta { gap: 16px !important; }
+#page-home .compact-item .item-main strong { white-space: normal; font-size: 14px !important; line-height: 1.2; }
+#page-home .compact-item .arrow { margin-right: 14px; }
+.profile-info { padding-top: 2px; }
+.content { padding-left: 22px !important; padding-right: 12px !important; }
+#page-home .access-card { padding: 16px 12px 14px 18px !important; }
+#page-home .access-main > div:first-child { flex: 1; min-width: 0; }
+#page-home .access-actions { flex: none; margin-top: 2px; }
+#page-home .status-line strong { font-size: 15px !important; }
+#page-home .small-accent-button { font-size: 12px !important; padding: 8px 11px !important; }
+#page-home .access-meta strong { white-space: nowrap; font-size: 16px !important; }
+#page-home .access-meta { gap: 16px !important; }
+#page-home .compact-item .item-main strong { white-space: normal; font-size: 14px !important; line-height: 1.2; }
+#page-home .compact-item .arrow { margin-right: 14px; }
+.profile-info { padding-top: 2px; }
+#page-home #home-promos-status::after,
+#page-home #home-wheels-status::after,
+#page-home .access-card::after { background: none !important; width: auto !important; height: auto !important; right: 7px !important; top: auto !important; bottom: 6px !important; transform: none !important; z-index: 2 !important; }
+#page-home .access-meta .group-access-meta { margin-left: 0 !important; width: auto !important; }
+#page-home .group-button { width: auto !important; min-height: 0 !important; }
+#page-home #home-promos-status::after,
+#page-home #home-wheels-status::after,
+#page-home .access-card::after { background: none !important; width: auto !important; height: auto !important; right: 7px !important; top: auto !important; bottom: 6px !important; transform: none !important; z-index: 2 !important; }
+#page-home .access-meta .group-access-meta { margin-left: 0 !important; width: auto !important; }
+#page-home .group-button { width: auto !important; min-height: 0 !important; }
