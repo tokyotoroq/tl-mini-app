@@ -4,297 +4,243 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Личный кабинет TL</title>
-        <link href="css/theme.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="style.css?v=20261005-1">
-        <link rel="stylesheet" href="oni.css?v=20261005-1">
+        <link rel="stylesheet" href="style.css?v=20261006-1">
+        <link rel="stylesheet" href="splash.css?v=20261006-1">
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
     </head>
     <body>
-        <div class="app theme-home">
-            <header class="header">
-                <div class="header-title">
-                    <strong>Личный кабинет TL</strong>
-                    <span lang="ja">個人アカウント</span>
+        <div id="splash" aria-hidden="true">
+            <div class="splash-inner">
+                <svg class="splash-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"/></svg>
+                <span class="splash-kanji" lang="ja">鬼</span>
+                <div class="splash-text">
+                    <span class="splash-line"></span>
+                    <strong><span>Личный кабинет TL</span></strong>
+                    <em lang="ja">個人アカウント</em>
                 </div>
-                <button class="icon-button" id="header-settings" onclick="openSettings()" aria-label="Настройки">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.2 3.5a6.2 6.2 0 0 0-.08-1l1.58-1.23-1.7-2.94-1.86.76a6.7 6.7 0 0 0-1.72-1L16.15 4.6h-3.4l-.28 1.99a6.7 6.7 0 0 0-1.72 1l-1.86-.76-1.7 2.94L8.77 11.0a6.2 6.2 0 0 0 0 2l-1.58 1.23 1.7 2.94 1.86-.76a6.7 6.7 0 0 0 1.72 1l.28 1.99h3.4l.28-1.99a6.7 6.7 0 0 0 1.72-1l1.86.76 1.7-2.94L20.12 13c.05-.32.08-.65.08-1Z"/>
-                    </svg>
-                </button>
-            </header>
+            </div>
+        </div>
+
+        <div class="app theme-home">
             <main class="content">
+
+                <!-- ===================== ГЛАВНАЯ ===================== -->
                 <section id="page-home" class="page active">
-                    <div class="oni-mark" aria-hidden="true"><span lang="ja">鬼の道</span><i lang="ja">鬼道</i></div>
-                    <div class="profile-row">
-                        <div class="avatar-placeholder" id="user-avatar">G</div>
-                        <div class="profile-info">
-                            <strong id="user-name">Grety</strong>
-                            <span id="user-username">@test_user</span>
+                    <div class="profile">
+                        <div class="avatar-frame">
+                            <img id="user-photo" alt="" hidden>
+                            <span id="user-avatar">G</span>
                         </div>
+                        <div class="profile-info">
+                            <strong id="user-username">@test_user</strong>
+                            <span lang="ja">個人アカウント</span>
+                        </div>
+                        <span class="seal" lang="ja">印</span>
                     </div>
-                    <div class="card access-card">
+
+                    <div class="card sheet taped access-card">
+                        <span class="note note-left" lang="ja">注目!</span>
+                        <span class="note note-right" lang="ja">今日</span>
                         <div class="access-main">
                             <div>
-                                <span class="card-label">СТАТУС ДОСТУПА</span>
+                                <span class="card-label">Статус доступа</span>
                                 <div class="status-line">
                                     <span class="status-dot"></span>
                                     <strong id="access-status">Бесплатный период</strong>
                                 </div>
                             </div>
-                            <div class="access-actions">
-                                <button class="small-accent-button" id="subscription-button" onclick="openSubscription()">Подробнее</button>
-                            </div>
+                            <button class="btn" id="subscription-button" onclick="openSubscription()">Подробнее</button>
                         </div>
-                        <svg class="katana" viewBox="0 0 300 24" aria-hidden="true">
-                            <path class="blade" d="M2 15 Q110 6 214 9 L214 14 Q110 12 6 17 Z"/>
-                            <path class="edge" d="M8 15.6 Q110 9.6 212 11.2"/>
-                            <rect class="habaki" x="214" y="8.5" width="6" height="6" rx="1"/>
-                            <ellipse class="tsuba" cx="223" cy="11.5" rx="3" ry="9"/>
-                            <rect class="tsuka" x="226" y="7.5" width="66" height="8" rx="3"/>
-                            <path class="ito" d="M232 8l5 3.5-5 3.5-5-3.5zM243 8l5 3.5-5 3.5-5-3.5zM254 8l5 3.5-5 3.5-5-3.5zM265 8l5 3.5-5 3.5-5-3.5zM276 8l5 3.5-5 3.5-5-3.5z"/>
-                            <rect class="kashira" x="290" y="7" width="6" height="9" rx="2"/>
-                        </svg>
+                        <div class="ink-line"></div>
                         <div class="access-meta">
-                            <div>
+                            <div class="meta">
                                 <span id="access-plan-label">Осталось</span>
                                 <strong id="access-days">5 дней</strong>
                             </div>
-                            <div class="group-access-meta">
-                                <div class="group-access-info">
-                                    <span>Доступ к группе</span>
-                                    <strong id="access-type">Имеется</strong>
-                                </div>
-                                <button class="small-accent-button group-button" id="group-button" onclick="openChannel()">Открыть группу</button>
+                            <div class="meta">
+                                <span>Доступ к группе</span>
+                                <strong id="access-type">Есть</strong>
                             </div>
+                            <button class="btn" id="group-button" onclick="openChannel()">Открыть группу</button>
                         </div>
                     </div>
-                    <div class="section-heading">
-                        <div>
-                            <h2>Активные колёса</h2>
+
+                    <div class="card sheet taped-right link-card" id="home-wheels-status" onclick="openWheels()">
+                        <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5V2M19 12h3M12 19v3M5 12H2"/></svg></div>
+                        <div class="item-main">
+                            <strong>Колёса фрибетов</strong>
+                            <span id="home-wheels-title">Активных сейчас: 2</span>
                         </div>
-                        <button class="text-button" onclick="openWheels()">Все <span>→</span>
-                        </button>
+                        <span class="arrow">→</span>
                     </div>
-                    <div id="home-wheels" class="compact-list">
-                        <div class="card compact-item clickable-item" id="home-wheels-status" onclick="openWheels()">
-                            <div class="item-icon red-ring">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="7"/>
-                                    <path d="M12 5V2M19 12h3M12 19v3M5 12H2"/>
-                                </svg>
-                            </div>
-                            <div class="item-main">
-                                <strong id="home-wheels-title">Имеются активные колёса (2)</strong>
-                                <span>Открыть полный список</span>
-                            </div>
-                            <span class="arrow">→</span>
-                        </div>
-                    </div>
-                    <div class="section-heading compact-heading">
-                        <div>
-                            <h2>Активные акции</h2>
-                        </div>
-                        <button class="text-button" onclick="openPromos()">Все <span>→</span>
-                        </button>
-                    </div>
-                    <div class="card compact-item promo-preview" id="home-promos-status" onclick="openPromos()">
+
+                    <div class="card sheet taped link-card" id="home-promos-status" onclick="openPromos()">
                         <div class="item-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="m20 13-7 7-9-9V4h7l9 9Z"/>
-                                <circle cx="8" cy="8" r="1.3"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="m20 13-7 7-9-9V4h7l9 9Z"/><circle cx="8" cy="8" r="1.3"/></svg>
                         </div>
                         <div class="item-main">
-                            <strong id="home-promos-title">Имеются активные акции (3)</strong>
-                            <span>Открыть полный список</span>
+                            <strong>Акции и розыгрыши</strong>
+                            <span id="home-promos-title">Активных сейчас: 3</span>
                         </div>
                         <span class="arrow">→</span>
                     </div>
                 </section>
+
+                <!-- ===================== КОЛЁСА ===================== -->
                 <section id="page-wheels" class="page">
-                    <div class="page-heading">
-                        <span class="eyebrow">BETBOOM</span>
+                    <div class="card sheet taped summary-card">
+                        <span class="note note-right" lang="ja">輪</span>
                         <h1>Колёса фрибетов</h1>
-                        <p>Участия и результаты твоих колёс.</p>
-                    </div>
-                    <div class="stats-grid">
-                        <div class="card stat-card">
-                            <span>Выиграно</span>
-                            <strong id="total-won">2 450 ₽</strong>
-                            <svg class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
-                                <polyline points="2,18 15,14 28,16 42,9 56,11 70,5 84,7 98,2"/>
-                            </svg>
-                        </div>
-                        <div class="card stat-card">
-                            <span>Участий</span>
-                            <strong id="total-plays">37</strong>
-                            <svg class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
-                                <polyline points="2,10 15,6 28,12 42,8 56,14 70,9 84,13 98,7"/>
-                            </svg>
+                        <p>Участия и результаты твоих колёс</p>
+                        <div class="ink-line"></div>
+                        <div class="stats">
+                            <div class="meta">
+                                <span>Выиграно</span>
+                                <strong id="total-won">2 450 ₽</strong>
+                            </div>
+                            <div class="meta">
+                                <span>Участий</span>
+                                <strong id="total-plays">37</strong>
+                            </div>
                         </div>
                     </div>
+
                     <div class="tabs">
-                        <button class="tab active" onclick="switchWheelTab('active', this)">Активные <span class="tab-dot"></span>
-                        </button>
+                        <button class="tab active" onclick="switchWheelTab('active', this)">Активные</button>
                         <button class="tab" onclick="switchWheelTab('history', this)">История</button>
                     </div>
-                    <div id="wheel-active" class="wheel-list">
-                        <div class="card wheel-row">
-                            <div class="wheel-mark">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="7"/>
-                                    <path d="M12 5V2M19 12h3M12 19v3M5 12H2"/>
-                                </svg>
-                            </div>
-                            <div class="wheel-main">
+
+                    <div id="wheel-active" class="list">
+                        <div class="card sheet wheel-row">
+                            <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5V2M19 12h3M12 19v3M5 12H2"/></svg></div>
+                            <div class="item-main">
                                 <strong>CCT1</strong>
-                                <span>Колесо фрибетов</span>
-                                <small>Активно · 18:42</small>
+                                <span>Активно · 18:42</span>
                             </div>
-                            <span class="status-live">LIVE</span>
+                            <span class="stamp-live">LIVE</span>
                         </div>
-                        <div class="card wheel-row">
-                            <div class="wheel-mark">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="7"/>
-                                    <path d="M12 5V2M19 12h3M12 19v3M5 12H2"/>
-                                </svg>
-                            </div>
-                            <div class="wheel-main">
+                        <div class="card sheet taped-right wheel-row">
+                            <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5V2M19 12h3M12 19v3M5 12H2"/></svg></div>
+                            <div class="item-main">
                                 <strong>BETNEWS</strong>
-                                <span>Колесо фрибетов</span>
-                                <small>Активно · 07:31</small>
+                                <span>Активно · 07:31</span>
                             </div>
-                            <span class="status-live">LIVE</span>
+                            <span class="stamp-live">LIVE</span>
                         </div>
                     </div>
-                    <div id="wheel-history" class="wheel-list hidden">
-                        <div class="card wheel-row history-row">
-                            <div class="wheel-mark">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="8"/>
-                                    <path d="M12 7v5l3 2"/>
-                                </svg>
-                            </div>
-                            <div class="wheel-main">
+
+                    <div id="wheel-history" class="list hidden">
+                        <div class="card sheet wheel-row">
+                            <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></div>
+                            <div class="item-main">
                                 <strong>SHOKE</strong>
-                                <span>Колесо фрибетов</span>
-                                <small>Завершено сегодня</small>
+                                <span>Завершено сегодня</span>
                             </div>
                             <strong class="result-positive">+500 ₽</strong>
                         </div>
-                        <div class="card wheel-row history-row">
-                            <div class="wheel-mark">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="8"/>
-                                    <path d="M12 7v5l3 2"/>
-                                </svg>
-                            </div>
-                            <div class="wheel-main">
+                        <div class="card sheet wheel-row">
+                            <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></div>
+                            <div class="item-main">
                                 <strong>DEKO2</strong>
-                                <span>Колесо фрибетов</span>
-                                <small>Завершено сегодня</small>
+                                <span>Завершено сегодня</span>
                             </div>
                             <strong class="result-muted">Без выигрыша</strong>
                         </div>
                     </div>
                 </section>
+
+                <!-- ===================== АКЦИИ ===================== -->
                 <section id="page-promos" class="page">
-                    <div class="page-heading">
-                        <h1>Акции и промо</h1>
-                        <p>Актуальные розыгрыши и бонусы.</p>
+                    <div class="card sheet taped summary-card">
+                        <span class="note note-right" lang="ja">券</span>
+                        <h1>Акции и розыгрыши</h1>
+                        <p>Актуальные розыгрыши и бонусы</p>
                     </div>
-                    <div class="promo-tabs">
-                        <button class="promo-filter active" onclick="filterPromos('all', this)">Все</button>
-                        <button class="promo-filter" onclick="filterPromos('nodep', this)">Без депозита</button>
-                        <button class="promo-filter" onclick="filterPromos('dep', this)">Депозитные</button>
+
+                    <div class="tabs promo-tabs">
+                        <button class="tab promo-filter active" onclick="filterPromos('all', this)">Все</button>
+                        <button class="tab promo-filter" onclick="filterPromos('nodep', this)">Без депозита</button>
+                        <button class="tab promo-filter" onclick="filterPromos('dep', this)">Депозитные</button>
                     </div>
-                    <div class="promo-list">
-                        <div class="card promo-card" data-type="nodep">
+
+                    <div class="list">
+                        <div class="card sheet promo-card" data-type="nodep">
                             <div class="promo-top">
-                                <span class="promo-tag">БЕЗ ДЕПОЗИТА</span>
+                                <span class="promo-tag">Без депозита</span>
                                 <span class="promo-date">до 12.09</span>
                             </div>
                             <h3>Фрибет за регистрацию</h3>
                             <p>Актуальное предложение для новых пользователей.</p>
-                            <button onclick="openPromo('registration')">Подробнее <span>→</span>
-                            </button>
+                            <button class="btn" onclick="openPromo('registration')">Подробнее →</button>
                         </div>
-                        <div class="card promo-card" data-type="dep">
+                        <div class="card sheet taped-right promo-card" data-type="dep">
                             <div class="promo-top">
-                                <span class="promo-tag">ДЕПОЗИТ</span>
+                                <span class="promo-tag">Депозит</span>
                                 <span class="promo-date">до 15.09</span>
                             </div>
                             <h3>Бонус на первое пополнение</h3>
                             <p>Условия акции и размер бонуса внутри.</p>
-                            <button onclick="openPromo('deposit')">Подробнее <span>→</span>
-                            </button>
+                            <button class="btn" onclick="openPromo('deposit')">Подробнее →</button>
                         </div>
-                        <div class="card promo-card" data-type="dep">
+                        <div class="card sheet promo-card" data-type="dep">
                             <div class="promo-top">
-                                <span class="promo-tag">ДЕПОЗИТ</span>
+                                <span class="promo-tag">Депозит</span>
                                 <span class="promo-date">до 20.09</span>
                             </div>
                             <h3>Бонус выходного дня</h3>
                             <p>Специальное предложение на ближайшие выходные.</p>
-                            <button onclick="openPromo('weekend')">Подробнее <span>→</span>
-                            </button>
+                            <button class="btn" onclick="openPromo('weekend')">Подробнее →</button>
                         </div>
                     </div>
                 </section>
+
+                <!-- ===================== ПОДПИСКА ===================== -->
                 <section id="page-subscription" class="page">
-                    <div class="page-heading">
-                        <h1>Подписка</h1>
-                        <p>Твой доступ к сервису TL.</p>
-                    </div>
-                    <div class="card subscription-card">
+                    <div class="card sheet taped subscription-card">
+                        <span class="note note-right" lang="ja">会員</span>
                         <div class="subscription-top">
                             <div>
-                                <span class="card-label">ТЕКУЩИЙ ДОСТУП</span>
+                                <span class="card-label">Текущий доступ</span>
                                 <h2 id="subscription-name">Бесплатный период</h2>
                             </div>
-                            <span class="active-badge">АКТИВЕН</span>
+                            <span class="stamp-live">Активен</span>
                         </div>
-                        <div class="subscription-info">
-                            <div>
+                        <div class="ink-line"></div>
+                        <div class="stats">
+                            <div class="meta">
                                 <span>Осталось</span>
                                 <strong>5 дней</strong>
                             </div>
-                            <div>
+                            <div class="meta">
                                 <span>Статус</span>
                                 <strong>Активен</strong>
                             </div>
                         </div>
-                        <div class="subscription-note">После бесплатного периода можно оформить платную подписку и сохранить доступ к функциям TL.</div>
-                        <button class="primary-button">Оформить подписку</button>
+                        <p class="subscription-note">После бесплатного периода можно оформить платную подписку и сохранить доступ к функциям TL.</p>
+                        <button class="btn btn-dark">Оформить подписку</button>
                     </div>
-                    <div class="simple-info">
-                        <span class="info-check">✓</span>
-                        <span>Колёса и история участия</span>
-                    </div>
-                    <div class="simple-info">
-                        <span class="info-check">✓</span>
-                        <span>Актуальные акции и розыгрыши</span>
-                    </div>
-                    <div class="simple-info">
-                        <span class="info-check">✓</span>
-                        <span>Автопринятие при привязанном BB</span>
+
+                    <div class="card sheet perks">
+                        <div class="perk"><span class="check">✓</span>Колёса и история участия</div>
+                        <div class="perk"><span class="check">✓</span>Актуальные акции и розыгрыши</div>
+                        <div class="perk"><span class="check">✓</span>Автопринятие при привязанном BB</div>
                     </div>
                 </section>
+
+                <!-- ===================== НАСТРОЙКИ ===================== -->
                 <section id="page-settings" class="page">
-                    <div class="page-heading">
+                    <div class="card sheet taped summary-card">
+                        <span class="note note-right" lang="ja">設定</span>
                         <h1>Настройки</h1>
-                        <p>Основные настройки личного кабинета.</p>
+                        <p>Основные настройки личного кабинета</p>
                     </div>
-                    <div class="card settings-card">
+
+                    <div class="card sheet settings-card">
                         <div class="setting-row">
-                            <div class="setting-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 3v4M12 17v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M3 12h4M17 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                                    <circle cx="12" cy="12" r="3"/>
-                                </svg>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
                             </div>
-                            <div class="setting-copy">
+                            <div class="item-main">
                                 <strong>Уведомления о выигрышах</strong>
                                 <span>Сообщать о результате участия</span>
                             </div>
@@ -303,14 +249,12 @@
                                 <span></span>
                             </label>
                         </div>
-                        <div class="setting-divider"></div>
+                        <div class="ink-line"></div>
                         <div class="setting-row">
-                            <div class="setting-icon accent-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5v14"/>
-                                </svg>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
                             </div>
-                            <div class="setting-copy">
+                            <div class="item-main">
                                 <strong>Автопринятие</strong>
                                 <span>Автоматически участвовать в колёсах</span>
                             </div>
@@ -320,14 +264,12 @@
                             </label>
                         </div>
                     </div>
-                    <div class="card account-card" onclick="openBetBoomAccount()">
-                        <div class="setting-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 3 4 7v5c0 4.8 3.3 7.9 8 9 4.7-1.1 8-4.2 8-9V7l-8-4Z"/>
-                                <path d="m9 12 2 2 4-4"/>
-                            </svg>
+
+                    <div class="card sheet taped-right link-card" onclick="openBetBoomAccount()">
+                        <div class="item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 4.8 3.3 7.9 8 9 4.7-1.1 8-4.2 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
-                        <div class="setting-copy">
+                        <div class="item-main">
                             <strong>Аккаунт BetBoom</strong>
                             <span id="bb-account-status">Не привязан · нужен для автопринятия</span>
                         </div>
@@ -335,42 +277,32 @@
                     </div>
                 </section>
             </main>
+
             <nav class="bottom-nav">
                 <button class="nav-item active" data-page="home">
-                    <svg viewBox="0 0 24 24">
-                        <path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-9Z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-9Z"/></svg>
                     <small>Главная</small>
                 </button>
                 <button class="nav-item" data-page="wheels">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="7"/>
-                        <path d="M12 5V2M19 12h3M12 19v3M5 12H2"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5V2M19 12h3M12 19v3M5 12H2"/></svg>
                     <small>Колёса</small>
                 </button>
                 <button class="nav-item" data-page="promos">
-                    <svg viewBox="0 0 24 24">
-                        <path d="m20 13-7 7-9-9V4h7l9 9Z"/>
-                        <circle cx="8" cy="8" r="1.3"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="m20 13-7 7-9-9V4h7l9 9Z"/><circle cx="8" cy="8" r="1.3"/></svg>
                     <small>Акции</small>
                 </button>
                 <button class="nav-item" data-page="subscription">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="3" y="5" width="18" height="14" rx="2"/>
-                        <path d="M3 10h18M7 15h4"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
                     <small>Подписка</small>
                 </button>
                 <button class="nav-item" data-page="settings">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.2 3.5a6.2 6.2 0 0 0-.08-1l1.58-1.23-1.7-2.94-1.86.76a6.7 6.7 0 0 0-1.72-1L16.15 4.6h-3.4l-.28 1.99a6.7 6.7 0 0 0-1.72 1l-1.86-.76-1.7 2.94L8.77 11a6.2 6.2 0 0 0 0 2l-1.58 1.23 1.7 2.94 1.86-.76a6.7 6.7 0 0 0 1.72 1l.28 1.99h3.4l.28-1.99a6.7 6.7 0 0 0 1.72-1l1.86.76 1.7-2.94L20.12 13c.05-.32.08-.65.08-1Z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
                     <small>Настройки</small>
                 </button>
             </nav>
         </div>
-        <script src="app.js"></script>
+
+        <script src="app.js?v=20261006-1"></script>
+        <script src="splash.js?v=20261006-1"></script>
     </body>
 </html>

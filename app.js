@@ -6,8 +6,8 @@ if (tg) {
     try {
         tg.ready();
         tg.expand();
-        tg.setHeaderColor("#09090b");
-        tg.setBackgroundColor("#09090b");
+        tg.setHeaderColor("#ecebe7");
+        tg.setBackgroundColor("#ecebe7");
     } catch (error) {
         console.log("Telegram WebApp API:", error);
     }
@@ -22,7 +22,8 @@ const state = {
         active: true,
         type: "free_trial",
         name: "Бесплатный период",
-        daysLeft: 5
+        daysLeft: 5,
+        groupAccess: true
     },
     settings: {
         autoAccept: false,
@@ -35,22 +36,32 @@ const state = {
 };
 
 function initializeUser() {
-    const userName = document.getElementById("user-name");
     const userUsername = document.getElementById("user-username");
     const avatar = document.getElementById("user-avatar");
+    const photo = document.getElementById("user-photo");
 
     let firstName = state.user.firstName;
     let username = state.user.username;
+    let photoUrl = state.user.photoUrl || "";
 
     if (tg?.initDataUnsafe?.user) {
         const user = tg.initDataUnsafe.user;
         firstName = user.first_name || firstName;
-        username = user.username || username;
+        username = user.username || "";
+        photoUrl = user.photo_url || photoUrl;
     }
 
-    if (userName) userName.textContent = firstName;
-    if (userUsername) userUsername.textContent = username ? `@${username}` : "Telegram";
-    if (avatar) avatar.textContent = firstName.charAt(0).toUpperCase();
+    if (userUsername) userUsername.textContent = username ? `@${username}` : firstName;
+    if (avatar) avatar.textContent = (firstName || username || "T").charAt(0).toUpperCase();
+
+    // Telegram отдаёт photo_url не всегда (зависит от приватности и клиента).
+    // Надёжно — получать фото через бота (getUserProfilePhotos) на бэкенде
+    // и подставлять ссылку в state.user.photoUrl.
+    if (photo && photoUrl) {
+        photo.onload = () => { photo.hidden = false; if (avatar) avatar.hidden = true; };
+        photo.onerror = () => { photo.hidden = true; if (avatar) avatar.hidden = false; };
+        photo.src = photoUrl;
+    }
 }
 
 function initializeSettings() {
@@ -72,10 +83,12 @@ function initializeAccess() {
         if (status) status.textContent = "Доступ не активен";
         if (days) days.textContent = "—";
         if (planLabel) planLabel.textContent = "Статус";
-        if (type) type.textContent = "TL";
+        if (type) type.textContent = "Нет";
         if (subscriptionName) subscriptionName.textContent = "Подписка не активна";
         return;
     }
+
+    if (type) type.textContent = state.subscription.groupAccess ? "Есть" : "Нет";
 
     if (state.subscription.type === "free_trial") {
         if (status) status.textContent = "Бесплатный период";
@@ -101,14 +114,14 @@ function initializeHome() {
 
     if (wheelsTitle) {
         wheelsTitle.textContent = wheelsCount > 0
-            ? `Имеются активные колёса (${wheelsCount})`
-            : "Активных колёс нет";
+            ? `Активных сейчас: ${wheelsCount}`
+            : "Сейчас нет активных";
     }
 
     if (promosTitle) {
         promosTitle.textContent = promosCount > 0
-            ? `Имеются активные акции (${promosCount})`
-            : "Активных акций нет";
+            ? `Активных сейчас: ${promosCount}`
+            : "Сейчас нет активных";
     }
 
     wheelsIcon?.classList.toggle("red-ring", wheelsCount > 0);
