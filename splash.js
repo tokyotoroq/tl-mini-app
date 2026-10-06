@@ -5,7 +5,7 @@
     const splash = document.getElementById("splash");
     if (!splash) return;
 
-    const SHOW_MS = 4300;
+    const SHOW_MS = 4700;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { splash.remove(); document.body.classList.add("app-ready"); return; }
 
@@ -108,7 +108,8 @@
         box.style.setProperty("--GX", GX.toFixed(1) + "px");
     }
     const loads = F.map(([f, w]) => document.fonts ? document.fonts.load(`${w} 20px '${f}'`, "ЛИЧНЫЙКАБИНЕТTL") : Promise.resolve());
-    Promise.race([Promise.all(loads), new Promise(r => setTimeout(r, 1500))]).then(buildTitle, buildTitle);
+    Promise.race([Promise.all(loads), new Promise(r => setTimeout(r, 1500))]).then(start, start);
+    function start() { try { buildTitle(); } catch (e) {} setTimeout(hide, SHOW_MS); }
 
     function hide() {
         if (splash.classList.contains("is-hiding")) return;
@@ -116,5 +117,5 @@
         document.body.classList.add("app-ready");
         setTimeout(() => splash.remove(), 700);
     }
-    setTimeout(hide, SHOW_MS);
+    setTimeout(hide, SHOW_MS + 2500);
 })();

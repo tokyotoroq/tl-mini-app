@@ -20,25 +20,25 @@
 #splash .sp-mark>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 @keyframes sp-draw{to{stroke-dashoffset:0}}
 @keyframes sp-fade{to{opacity:1}}
-#splash .sp-spin{transform-origin:115px 115px;animation:sp-spin 1.9s cubic-bezier(.15,.75,.2,1) .15s both}
+#splash .sp-spin{transform-origin:115px 115px;animation:sp-spin 1.55s cubic-bezier(.15,.75,.2,1) .1s both}
 @keyframes sp-spin{from{transform:rotate(-540deg) scale(.6);opacity:0}15%{opacity:1}to{transform:none;opacity:1}}
-#splash .sp-pointer{opacity:0;transform:translateY(-14px);animation:sp-pin .4s cubic-bezier(.2,1.5,.4,1) 1.85s forwards}
+#splash .sp-pointer{opacity:0;transform:translateY(-14px);animation:sp-pin .4s cubic-bezier(.2,1.5,.4,1) 1.5s forwards}
 @keyframes sp-pin{to{opacity:1;transform:none}}
 
 /* надпись: сначала TL, потом из него «вытекает» ЛИЧНЫЙ КАБИНЕТ */
 #splash .sp-title{display:flex;align-items:flex-start;height:var(--H)}
-#splash .sp-flow{position:relative;width:0;height:calc(var(--H) + 8px);margin-top:-8px;overflow:hidden;animation:sp-flow 1s cubic-bezier(.65,0,.25,1) 2.55s forwards}
+#splash .sp-flow{position:relative;width:0;height:calc(var(--H) + 8px);margin-top:-8px;overflow:hidden;animation:sp-flow .9s cubic-bezier(.65,0,.25,1) 2.1s forwards}
 @keyframes sp-flow{to{width:var(--FW)}}
 #splash .sp-lines{position:absolute;right:var(--GX);top:8px;transform-origin:right center}
 #splash .sp-lines .sp-l1,#splash .sp-lines .sp-l2{transform-origin:right center;transform:translateX(30%) scaleX(1.25);opacity:0;filter:blur(3px);
   animation:sp-liquid .95s cubic-bezier(.3,.7,.2,1) forwards}
-#splash .sp-lines .sp-l1{animation-delay:2.6s}
-#splash .sp-lines .sp-l2{animation-delay:2.72s}
+#splash .sp-lines .sp-l1{animation-delay:2.15s}
+#splash .sp-lines .sp-l2{animation-delay:2.27s}
 @keyframes sp-liquid{to{transform:none;opacity:1;filter:none}}
-#splash .sp-tl{opacity:0;transform:scale(1.35);filter:blur(6px);animation:sp-tl .6s cubic-bezier(.2,.9,.3,1.2) 2.05s forwards}
+#splash .sp-tl{opacity:0;transform:scale(1.35);filter:blur(6px);animation:sp-tl .6s cubic-bezier(.2,.9,.3,1.2) 1.65s forwards}
 @keyframes sp-tl{to{opacity:1;transform:none;filter:none}}
 #splash .sp-sub{font-family:"Noto Serif CJK JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:11px;letter-spacing:1em;color:#6a5f5c;
-  opacity:0;animation:sp-subin 1s ease 3.35s forwards}
+  opacity:0;animation:sp-subin .8s ease 2.75s forwards}
 @keyframes sp-subin{to{opacity:1;letter-spacing:.5em}}
 
 /* лепестки */
